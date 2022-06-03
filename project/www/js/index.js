@@ -40,8 +40,8 @@ function showLocation(location) {
 	locationElement.classList.add('location');
 	locationElement.innerHTML = `
 		<h2>Din position</h2>
-		<p>Latitude: ${location.coords.latitude}</p>
-		<p>Longitude: ${location.coords.longitude}</p>
+		<p>Latitud: ${location.coords.latitude}</p>
+		<p>Longitud: ${location.coords.longitude}</p>
 	`;
 	document.querySelector('#location-wrapper').appendChild(locationElement);
 }
