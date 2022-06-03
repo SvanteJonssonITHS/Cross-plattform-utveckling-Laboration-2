@@ -26,7 +26,7 @@ function createCity(city) {
 	return cityElement;
 }
 
-async function getDeviceLocation() {
+function getDeviceLocation() {
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition((location) => showLocation(location));
 	} else {
