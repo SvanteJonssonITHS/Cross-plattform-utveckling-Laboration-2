@@ -1,9 +1,13 @@
 document.addEventListener('deviceready', main, false);
 
 async function main() {
+	// Get random city
 	const city = await getRandomCity();
 	const cityElement = createCity(city);
 	document.querySelector('#city-wrapper').appendChild(cityElement);
+
+	// Get device location
+	getDeviceLocation();
 }
 
 async function getRandomCity() {
@@ -20,4 +24,24 @@ function createCity(city) {
 		<p>Invånare: ${city.population}</p>
 	`;
 	return cityElement;
+}
+
+async function getDeviceLocation() {
+	if (navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition((location) => showLocation(location));
+	} else {
+		alert('Geolocation is not supported by this browser.');
+	}
+	return location;
+}
+
+function showLocation(location) {
+	const locationElement = document.createElement('div');
+	locationElement.classList.add('location');
+	locationElement.innerHTML = `
+		<h2>Din position</h2>
+		<p>Latitude: ${location.coords.latitude}</p>
+		<p>Longitude: ${location.coords.longitude}</p>
+	`;
+	document.querySelector('#location-wrapper').appendChild(locationElement);
 }
